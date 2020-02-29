@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>ENTRY</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        * {
+            -webkit-touch-callout: none;
+            /*系统默认菜单被禁用*/
+            -webkit-user-select: none;
+            /*webkit浏览器*/
+            -khtml-user-select: none;
+            /*早期浏览器*/
+            -moz-user-select: none;
+            /*火狐*/
+            -ms-user-select: none;
+            /*IE10*/
+            user-select: none;
+        }
+
+        input {
+            -webkit-user-select: auto;
+            /*webkit浏览器*/
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #FEF2D8;
+            transform: rotate(90deg) scale(2.4);
+            overflow: hidden;
+        }
+
+        .fundo {
+            position: relative;
+            margin: 50px auto;
+            width: 600px;
+            height: 400px;
+        }
+
+        .controle {
+            position: absolute;
+            top: 140px;
+            left: 192px;
+            width: 200px;
+            height: 120px;
+            background: #fff;
+            animation: shake .2s infinite alternate ease-in-out;
+        }
+
+        .controle:hover {
+            animation: shake .0s infinite alternate ease-in-out;
+        }
+
+        .controle::after {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            top: -0px;
+            left: -65px;
+            content: "";
+        }
+
+        .controle::before {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            top: -0px;
+            left: 130px;
+            content: "";
+        }
+
+        .detalhe-1 {
+            position: absolute;
+            top: 29px;
+            left: -40px;
+            z-index: 1;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #b7b7b7;
+            position: absolute;
+        }
+
+        .detalhe-2 {
+            position: absolute;
+            top: 15px;
+            left: 145px;
+            z-index: 1;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #b7b7b7;
+            position: absolute;
+        }
+
+        .botoes-1 {
+            position: absolute;
+            top: 15px;
+            left: 35px;
+            width: 20px;
+            height: 60px;
+            background: #b7b7b7;
+        }
+
+        .botoes-1 #goright {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            /* border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid #555; */
+            content: "";
+            z-index: 1;
+            width: 40px;
+            height: 20px;
+        }
+
+        .botoes-1 #goleft {
+            position: absolute;
+            top: 20px;
+            left: -40px;
+            /* border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 5px solid #555; */
+            content: "";
+            z-index: 1;
+            width: 40px;
+            height: 20px;
+        }
+
+        .botoes-2 {
+            position: absolute;
+            top: 35px;
+            left: 15px;
+            width: 60px;
+            height: 20px;
+            background: #b7b7b7;
+        }
+
+        .botoes-2 #godown {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            /* border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #555; */
+            content: "";
+            z-index: 1;
+            width: 20px;
+            height: 40px;
+        }
+
+        .botoes-2 #goup {
+            position: absolute;
+            top: -40px;
+            left: 20px;
+            /* border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #555; */
+            content: "";
+            z-index: 1;
+            width: 20px;
+            height: 40px;
+        }
+
+        .select {
+            position: absolute;
+            top: 82px;
+            left: 90px;
+            width: 5px;
+            height: 20px;
+            transform: rotate(45deg);
+            border-radius: 50px;
+            background: #b7b7b7;
+        }
+
+        .start {
+            position: absolute;
+            top: 82px;
+            left: 120px;
+            width: 5px;
+            height: 20px;
+            transform: rotate(45deg);
+            border-radius: 50px;
+            background: #b7b7b7;
+        }
+
+        .start:hover {
+            background: #666;
+        }
+
+        .select:hover {
+            background: #666;
+        }
+
+        .area-botao-1 {
+            position: absolute;
+            top: 35px;
+            left: 15px;
+            width: 70px;
+            height: 25px;
+            transform: rotate(135deg);
+            border-radius: 50px;
+            background: #fff;
+            z-index: 1;
+        }
+
+        .area-botao-1 #func1 {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #777;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            content: "";
+        }
+
+        .area-botao-1 #func2 {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #777;
+            position: absolute;
+            top: 1px;
+            left: 46px;
+            content: "";
+        }
+
+        .area-botao-2 {
+            position: absolute;
+            top: 60px;
+            left: 40px;
+            width: 70px;
+            height: 25px;
+            transform: rotate(135deg);
+            border-radius: 50px;
+            background: #fff;
+            z-index: 1;
+        }
+
+        .area-botao-2 #func3 {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #777;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            content: "";
+        }
+
+        .area-botao-2 #func4 {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #777;
+            position: absolute;
+            top: 1px;
+            left: 46px;
+            content: "";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fundo">
+        <div class="controle">
+            <div class="detalhe-1">
+                <div class="botoes-1">
+                    <div class="sendBtn" id="goleft"></div>
+                    <div class="sendBtn" id="goright"></div>
+                </div>
+                <div class="botoes-2">
+                    <div class="sendBtn" id="goup"></div>
+                    <div class="sendBtn" id="godown"></div>
+                </div>
+            </div>
+            <div class="select" onclick="reSetBtn()"></div>
+            <div class="start"></div>
+            <div class="detalhe-2">
+                <div class="area-botao-1">
+                    <div class="sendBtn" id="func1"></div>
+                    <div class="sendBtn" id="func2"></div>
+                </div>
+                <div class="area-botao-2">
+                    <div class="sendBtn" id="func3"></div>
+                    <div class="sendBtn" id="func4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <button class='sendBtn'>A</button>
+    <button class='sendBtn'>S</button>
+    <button class='sendBtn'>D</button>
+    <button class='sendBtn'>W</button>
+    <button class='sendBtn'>J</button>
+    <button class='sendBtn'>K</button> -->
+
+</body>
+<script src="http://172.16.31.225:8081/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+
+    var socket = io.connect('http://172.16.31.225:8081')//与服务器进行连接
+    // 37;39;38;40;96;97;98;99
+    var keys = [65, 68, 87, 83, 75, 74, 77, 76];
+    var sendBtns = document.getElementsByClassName('sendBtn');
+    function sendBtn_addEventListeners(i) {
+        // sendBtns[i].onmousedown = function () {
+        //     socket.emit('presskey', keys[i]);
+        // }
+        // sendBtns[i].onmouseup = function () {
+        //     socket.emit('releasekey', keys[i]);
+        // }
+        sendBtns[i].addEventListener('touchstart', function () {
+            socket.emit('presskey', keys[i]);
+        }, false);
+        sendBtns[i].addEventListener('touchend', function () {
+            socket.emit('releasekey', keys[i]);
+        }, false);
+    }
+
+    for (var i = 0; i < 8; i++) {
+        sendBtn_addEventListeners(i);
+    }
+
+    function reSetBtn() {
+        var cinkeys = prompt("请设置按键：", "65;68;87;83;75;74;77;76");
+        var newkeys = cinkeys.split(";");
+        console.log(cinkeys);
+        console.log(newkeys);
+        for(var i = 0;i<8;i++){
+            keys[i] = parseInt(newkeys[i]);
+        }
+        console.log(keys);
+        // var sendBtns = document.getElementsByClassName('sendBtn');
+        // for (var i = 0; i < 8; i++) {
+        //     sendBtn_addEventListeners(i);
+        // }
+    }
+
+    socket.on('login', function (msg) {
+        if (msg == 1) {
+            alert('Players are already enough!');
+            window.location.href = "about:blank";
+            window.close()
+        } else {
+            alert('Welcome!');
+        }
+    })
+
+</script>
+
+</html>
